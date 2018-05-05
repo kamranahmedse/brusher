@@ -1,7 +1,4 @@
 class Murk {
-    /**
-     * @param {object} options
-     */
     constructor(options = {}) {
         this.mouseSteps = [];
         this.drawBoardCanvas = null;
@@ -177,6 +174,10 @@ class Murk {
         }
     }
 
+    /**
+     * Creates canvas for the set element
+     * @returns {HTMLCanvasElement}
+     */
     createCanvasNode() {
         const elementDimensions = this.getElementDimensions();
 
@@ -187,6 +188,10 @@ class Murk {
         return canvas;
     }
 
+    /**
+     * Converts
+     * @returns {Object|Element}
+     */
     getElementNode() {
         const element = this.options.element;
         if (element && typeof element === 'object' && 'nodeType' in element) {
@@ -196,6 +201,10 @@ class Murk {
         return document.querySelector(element || 'body');
     }
 
+    /**
+     * Gets dimensions for the selected element
+     * @returns {ClientRect | DOMRect}
+     */
     getElementDimensions() {
         return this.getElementNode().getBoundingClientRect();
     }
