@@ -1,8 +1,4 @@
-/**
- * Murk; noun for darkness or thick mist that makes it difficult to see.
- * It is a tiny library that helps you put
- */
-class Murk {
+export default class Brusher {
   /**
    * @param {Object} options
    */
@@ -43,11 +39,13 @@ class Murk {
       if (typeof selector !== 'string') {
         throw new Error('Selectors in `skip` must be strings');
       }
+
+      return selector;
     });
   }
 
   /**
-   * Initializes the murk, while preparing the
+   * Initializes the brusher, while preparing the
    * canvas and binding the necessary events
    */
   init() {
@@ -65,7 +63,7 @@ class Murk {
       // the stroke. Time helps us decrease the length of stroke over time.
       this.mouseSteps.unshift({
         time: Date.now(),
-        ...this.getMousePositionInCanvas(e)
+        ...this.getMousePositionInCanvas(e),
       });
 
       this.drawTail();
@@ -86,7 +84,7 @@ class Murk {
 
     return {
       x: evMouseMove.clientX - canvasRect.left,
-      y: evMouseMove.clientY - canvasRect.top
+      y: evMouseMove.clientY - canvasRect.top,
     };
   }
 
@@ -118,7 +116,7 @@ class Murk {
         left: element.offsetLeft,
         top: element.offsetTop,
         width: element.offsetWidth,
-        height: element.offsetHeight
+        height: element.offsetHeight,
       });
     }
   }
@@ -140,7 +138,7 @@ class Murk {
     canvas.style.zIndex = '-1';
 
     this.drawBoardCanvas = canvas;
-    this.drawBoardCanvasContext = canvas.getContext("2d");
+    this.drawBoardCanvasContext = canvas.getContext('2d');
 
     document.body.appendChild(this.drawBoardCanvas);
   }
@@ -157,7 +155,7 @@ class Murk {
 
     this.imageCanvasContext.lineCap = this.options.lineStyle;
     this.imageCanvasContext.shadowBlur = 30;
-    this.imageCanvasContext.shadowColor = "#000000";
+    this.imageCanvasContext.shadowColor = '#000000';
   }
 
   /**
@@ -194,18 +192,18 @@ class Murk {
 
     this.createStrokeFromSteps();
 
-    let drawHeight = this.drawBoardCanvas.width / this.image.naturalWidth * this.image.naturalHeight;
+    let drawHeight = (this.drawBoardCanvas.width / this.image.naturalWidth) * this.image.naturalHeight;
     let drawWidth = this.drawBoardCanvas.width;
 
     if (drawHeight < this.drawBoardCanvas.height) {
       drawHeight = this.drawBoardCanvas.height;
-      drawWidth = this.drawBoardCanvas.height / this.image.naturalHeight * this.image.naturalWidth;
+      drawWidth = (this.drawBoardCanvas.height / this.image.naturalHeight) * this.image.naturalWidth;
     }
 
     this.drawBoardCanvasContext.drawImage(this.image, 0, 0, drawWidth, drawHeight);
-    this.drawBoardCanvasContext.globalCompositeOperation = "destination-in";
+    this.drawBoardCanvasContext.globalCompositeOperation = 'destination-in';
     this.drawBoardCanvasContext.drawImage(this.imageCanvas, 0, 0);
-    this.drawBoardCanvasContext.globalCompositeOperation = "source-over";
+    this.drawBoardCanvasContext.globalCompositeOperation = 'source-over';
 
     this.clearSkippedPositions();
   }
@@ -217,7 +215,7 @@ class Murk {
 
     for (let counter = 0; counter < this.positionsToSkip.length; counter++) {
       const position = this.positionsToSkip[counter];
-      this.drawBoardCanvasContext.clearRect(position.left, position.top, position.width, position.height)
+      this.drawBoardCanvasContext.clearRect(position.left, position.top, position.width, position.height);
     }
   }
 
@@ -228,14 +226,15 @@ class Murk {
     const currentTime = Date.now();
 
     for (let counter = 1; counter < this.mouseSteps.length; counter++) {
-      const strokeAlpha = Math.max(1 - (currentTime - this.mouseSteps[counter].time) / 1000, 0);
+      const timeDiff = (currentTime - this.mouseSteps[counter].time) / 1000;
+      const strokeAlpha = Math.max(1 - timeDiff, 0);
 
       this.imageCanvasContext.strokeStyle = `rgba(0,0,0,${strokeAlpha})`;
       this.imageCanvasContext.lineWidth = this.options.stroke;
       this.imageCanvasContext.beginPath();
       this.imageCanvasContext.moveTo(this.mouseSteps[counter - 1].x, this.mouseSteps[counter - 1].y);
       this.imageCanvasContext.lineTo(this.mouseSteps[counter].x, this.mouseSteps[counter].y);
-      this.imageCanvasContext.stroke()
+      this.imageCanvasContext.stroke();
     }
   }
 
@@ -260,7 +259,7 @@ class Murk {
   createCanvasNode() {
     const elementDimensions = this.getElementDimensions();
 
-    const canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
     canvas.width = elementDimensions.width;
     canvas.height = elementDimensions.height;
 
