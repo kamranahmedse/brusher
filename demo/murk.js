@@ -10,6 +10,9 @@ class Murk {
         this.options = {
             element: 'body',
             image: 'original.jpg',
+            stroke: 80,
+            keepBlur: false,
+            lineStyle: 'round',
             ...options
         };
     }
@@ -73,7 +76,7 @@ class Murk {
         this.imageCanvas = canvas;
         this.imageCanvasContext = canvas.getContext('2d');
 
-        this.imageCanvasContext.lineCap = "round";
+        this.imageCanvasContext.lineCap = this.options.lineStyle;
         this.imageCanvasContext.shadowBlur = 30;
         this.imageCanvasContext.shadowColor = "#000000";
     }
@@ -100,7 +103,43 @@ class Murk {
     drawTail() {
         this.removeOldSteps();
 
-        // @todo actually draw tail
+        // Do not clear the drawn image if the blur is to be kept
+        if (!this.options.keepBlur) {
+            this.imageCanvasContext.clearRect(0, 0, this.imageCanvas.width, this.imageCanvas.height);
+        }
+
+        this.createStrokeFromSteps();
+
+        let drawHeight = this.drawBoardCanvas.width / this.image.naturalWidth * this.image.naturalHeight;
+        let drawWidth = this.drawBoardCanvas.width;
+
+        if (drawHeight < this.drawBoardCanvas.height) {
+            drawHeight = this.drawBoardCanvas.height;
+            drawWidth = this.drawBoardCanvas.height / this.image.naturalHeight * this.image.naturalWidth;
+        }
+
+        this.drawBoardCanvasContext.drawImage(this.image, 0, 0, drawWidth, drawHeight);
+        this.drawBoardCanvasContext.globalCompositeOperation = "destination-in";
+        this.drawBoardCanvasContext.drawImage(this.imageCanvas, 0, 0);
+        this.drawBoardCanvasContext.globalCompositeOperation = "source-over";
+    }
+
+    /**
+     * Creates stroke from the recorded mouse steps
+     */
+    createStrokeFromSteps() {
+        const currentTime = Date.now();
+
+        for (let counter = 1; counter < this.mouseSteps.length; counter++) {
+            const strokeAlpha = Math.max(1 - (currentTime - this.mouseSteps[counter].time) / 1000, 0);
+
+            this.imageCanvasContext.strokeStyle = `rgba(0,0,0,${strokeAlpha})`;
+            this.imageCanvasContext.lineWidth = this.options.stroke;
+            this.imageCanvasContext.beginPath();
+            this.imageCanvasContext.moveTo(this.mouseSteps[counter - 1].x, this.mouseSteps[counter - 1].y);
+            this.imageCanvasContext.lineTo(this.mouseSteps[counter].x, this.mouseSteps[counter].y);
+            this.imageCanvasContext.stroke()
+        }
     }
 
     /**
