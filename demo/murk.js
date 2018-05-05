@@ -20,7 +20,19 @@ class Murk {
     }
 
     bind() {
-        // @todo bindings for mouse move to draw tail
+        document.addEventListener('mousemove', (e) => {
+            if (!e.clientX || !e.clientY) {
+                return;
+            }
+
+            this.mouseSteps.unshift({
+                time: Date.now(),
+                x: e.clientX,
+                y: e.clientY
+            });
+
+            this.drawTail();
+        });
     }
 
     /**
@@ -82,8 +94,27 @@ class Murk {
         this.image.src = this.options.image;
     }
 
+    /**
+     * Draws tail at the path where mouse was last moved
+     */
     drawTail() {
-        // @todo draw tail on the path where mouse was last moved
+        this.removeOldSteps();
+
+        // @todo actually draw tail
+    }
+
+    /**
+     * Remove any steps older than one second to not keep
+     * them piling up in memory
+     */
+    removeOldSteps() {
+        const currentTimeStamp = Date.now();
+
+        for (let counter = 0; counter < this.mouseSteps.length; counter++) {
+            if (currentTimeStamp - this.mouseSteps[counter].time > 1000) {
+                this.mouseSteps.length = counter;
+            }
+        }
     }
 
     createCanvasNode() {
