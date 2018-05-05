@@ -87,6 +87,11 @@ class Murk {
 
         const canvas = this.createCanvasNode();
 
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.zIndex = '-1';
+
         this.drawBoardCanvas = canvas;
         this.drawBoardCanvasContext = canvas.getContext("2d");
 
