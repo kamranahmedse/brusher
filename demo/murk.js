@@ -8,6 +8,7 @@ class Murk {
    */
   constructor(options = {}) {
     this.mouseSteps = [];
+    this.positionsToSkip = [];
     this.drawBoardCanvas = null;
     this.drawBoardCanvasContext = null;
     this.imageCanvas = null;
@@ -16,16 +17,33 @@ class Murk {
     this.tailAnimationFrame = null;
 
     this.options = {
-      element: 'body',
-      image: 'original.jpg',
+      image: null,
       stroke: 80,
       keepBlur: false,
       lineStyle: 'round',
       skip: [],
-      ...options
+      ...options,
+      element: 'body',    // Only `body` element is supported for now
     };
 
     this.drawTail = this.drawTail.bind(this);
+    this.validateOptions();
+  }
+
+  /**
+   * Validates for any invalid options given
+   */
+  validateOptions() {
+    if (!this.options.image) {
+      throw new Error('Image path to use as brush is required');
+    }
+
+    // All the selectors in `skip` should be strings
+    this.options.skip.map((selector) => {
+      if (typeof selector !== 'string') {
+        throw new Error('Selectors in `skip` must be strings');
+      }
+    });
   }
 
   /**
@@ -38,21 +56,20 @@ class Murk {
   }
 
   bind() {
-    this.getElementNode()
-      .addEventListener('mousemove', (e) => {
-        if (!e.clientX || !e.clientY) {
-          return;
-        }
+    document.addEventListener('mousemove', (e) => {
+      if (!e.clientX || !e.clientY) {
+        return;
+      }
 
-        // Keep the co-ordinates and time, this will be used while drawing
-        // the stroke. Time helps us decrease the length of stroke over time.
-        this.mouseSteps.unshift({
-          time: Date.now(),
-          ...this.getMousePositionInCanvas(e)
-        });
-
-        this.drawTail();
+      // Keep the co-ordinates and time, this will be used while drawing
+      // the stroke. Time helps us decrease the length of stroke over time.
+      this.mouseSteps.unshift({
+        time: Date.now(),
+        ...this.getMousePositionInCanvas(e)
       });
+
+      this.drawTail();
+    });
 
     window.addEventListener('resize', () => {
       this.prepareCanvas();
@@ -79,9 +96,31 @@ class Murk {
    * drawing canvas
    */
   prepareCanvas() {
+    this.findPositionsToSkip();
+
     this.prepareDrawingCanvas();
     this.prepareImageCanvas();
     this.loadSelectedImage();
+  }
+
+  /**
+   * Finds the position of elements where
+   * we are not to draw
+   */
+  findPositionsToSkip() {
+    for (let counter = 0; counter < this.options.skip.length; counter++) {
+      const element = document.querySelector(this.options.skip[counter]);
+      if (!element) {
+        continue;
+      }
+
+      this.positionsToSkip.push({
+        left: element.offsetLeft,
+        top: element.offsetTop,
+        width: element.offsetWidth,
+        height: element.offsetHeight
+      });
+    }
   }
 
   /**
@@ -167,6 +206,19 @@ class Murk {
     this.drawBoardCanvasContext.globalCompositeOperation = "destination-in";
     this.drawBoardCanvasContext.drawImage(this.imageCanvas, 0, 0);
     this.drawBoardCanvasContext.globalCompositeOperation = "source-over";
+
+    this.clearSkippedPositions();
+  }
+
+  clearSkippedPositions() {
+    if (!this.positionsToSkip) {
+      return;
+    }
+
+    for (let counter = 0; counter < this.positionsToSkip.length; counter++) {
+      const position = this.positionsToSkip[counter];
+      this.drawBoardCanvasContext.clearRect(position.left, position.top, position.width, position.height)
+    }
   }
 
   /**
@@ -216,7 +268,7 @@ class Murk {
   }
 
   /**
-   * Converts
+   * Gets node from the given query selector
    * @returns {Object|Element}
    */
   getElementNode() {
