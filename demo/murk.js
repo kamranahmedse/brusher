@@ -1,4 +1,11 @@
+/**
+ * Murk; noun for darkness or thick mist that makes it difficult to see.
+ * It is a tiny library that helps you put
+ */
 class Murk {
+    /**
+     * @param {Object} options
+     */
     constructor(options = {}) {
         this.mouseSteps = [];
         this.drawBoardCanvas = null;
