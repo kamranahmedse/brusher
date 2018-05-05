@@ -6,6 +6,7 @@ class Murk {
         this.imageCanvas = null;
         this.imageCanvasContext = null;
         this.image = null;
+        this.tailAnimationFrame = null;
 
         this.options = {
             element: 'body',
@@ -15,6 +16,8 @@ class Murk {
             lineStyle: 'round',
             ...options
         };
+
+        this.drawTail = this.drawTail.bind(this);
     }
 
     init() {
@@ -102,6 +105,11 @@ class Murk {
      */
     drawTail() {
         this.removeOldSteps();
+
+        window.cancelAnimationFrame(this.tailAnimationFrame);
+        if (this.mouseSteps.length > 0) {
+            this.tailAnimationFrame = window.requestAnimationFrame(this.drawTail);
+        }
 
         // Do not clear the drawn image if the blur is to be kept
         if (!this.options.keepBlur) {
