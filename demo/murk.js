@@ -1,4 +1,7 @@
 class Murk {
+    /**
+     * @param {object} options
+     */
     constructor(options = {}) {
         this.mouseSteps = [];
         this.drawBoardCanvas = null;
@@ -20,6 +23,10 @@ class Murk {
         this.drawTail = this.drawTail.bind(this);
     }
 
+    /**
+     * Initializes the murk, while preparing the
+     * canvas and binding the necessary events
+     */
     init() {
         this.prepareCanvas();
         this.bind();
@@ -31,6 +38,8 @@ class Murk {
                 return;
             }
 
+            // Keep the co-ordinates and time, this will be used while drawing
+            // the stroke. Time helps us decrease the length of stroke over time.
             this.mouseSteps.unshift({
                 time: Date.now(),
                 x: e.clientX,
@@ -38,6 +47,10 @@ class Murk {
             });
 
             this.drawTail();
+        });
+
+        window.addEventListener('resize', () => {
+            this.prepareCanvas();
         });
     }
 
