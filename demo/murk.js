@@ -30,25 +30,39 @@ class Murk {
     }
 
     bind() {
-        document.addEventListener('mousemove', (e) => {
-            if (!e.clientX || !e.clientY) {
-                return;
-            }
+        this.getElementNode()
+            .addEventListener('mousemove', (e) => {
+                if (!e.clientX || !e.clientY) {
+                    return;
+                }
 
-            // Keep the co-ordinates and time, this will be used while drawing
-            // the stroke. Time helps us decrease the length of stroke over time.
-            this.mouseSteps.unshift({
-                time: Date.now(),
-                x: e.clientX,
-                y: e.clientY
+                // Keep the co-ordinates and time, this will be used while drawing
+                // the stroke. Time helps us decrease the length of stroke over time.
+                this.mouseSteps.unshift({
+                    time: Date.now(),
+                    ...this.getMousePositionInCanvas(e)
+                });
+
+                this.drawTail();
             });
-
-            this.drawTail();
-        });
 
         window.addEventListener('resize', () => {
             this.prepareCanvas();
         });
+    }
+
+    /**
+     * Gets the mouse position relative to canvas
+     * @param evMouseMove
+     * @returns {{x: number, y: number}}
+     */
+    getMousePositionInCanvas(evMouseMove) {
+        const canvasRect = this.drawBoardCanvas.getBoundingClientRect();
+
+        return {
+            x: evMouseMove.clientX - canvasRect.left,
+            y: evMouseMove.clientY - canvasRect.top
+        };
     }
 
     /**
