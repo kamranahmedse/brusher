@@ -5,7 +5,6 @@ export default class Brusher {
   constructor(options = {}) {
     this.blurryStyleNode = null;
     this.mouseSteps = [];
-    this.positionsToSkip = [];
     this.drawBoardCanvas = null;
     this.drawBoardCanvasContext = null;
     this.imageCanvas = null;
@@ -20,7 +19,6 @@ export default class Brusher {
       autoBlur: false,
       autoBlurValue: 15,
       lineStyle: 'round',
-      skip: [],
       ...options,
       element: 'body',    // Only `body` element is supported for now
     };
@@ -36,15 +34,6 @@ export default class Brusher {
     if (!this.options.image) {
       throw new Error('Image path to use as brush is required');
     }
-
-    // All the selectors in `skip` should be strings
-    this.options.skip.map((selector) => {
-      if (typeof selector !== 'string') {
-        throw new Error('Selectors in `skip` must be strings');
-      }
-
-      return selector;
-    });
   }
 
   /**
@@ -101,8 +90,6 @@ export default class Brusher {
       this.attachBlurryBackground();
     }
 
-    this.findPositionsToSkip();
-
     this.prepareDrawingCanvas();
     this.prepareImageCanvas();
     this.loadSelectedImage();
@@ -143,30 +130,6 @@ export default class Brusher {
     document.head.appendChild(style);
 
     this.blurryStyleNode = style;
-  }
-
-  /**
-   * Finds the position of elements where
-   * we are not to draw
-   */
-  findPositionsToSkip() {
-    this.positionsToSkip = [];
-
-    for (let counter = 0; counter < this.options.skip.length; counter++) {
-      const element = document.querySelector(this.options.skip[counter]);
-      if (!element) {
-        continue;
-      }
-
-      this.positionsToSkip.push({
-        left: element.offsetLeft,
-        top: element.offsetTop,
-        width: element.offsetWidth,
-        height: element.offsetHeight,
-      });
-    }
-
-    console.log(this.positionsToSkip);
   }
 
   /**
@@ -252,19 +215,6 @@ export default class Brusher {
     this.drawBoardCanvasContext.globalCompositeOperation = 'destination-in';
     this.drawBoardCanvasContext.drawImage(this.imageCanvas, 0, 0);
     this.drawBoardCanvasContext.globalCompositeOperation = 'source-over';
-
-    this.clearSkippedPositions();
-  }
-
-  clearSkippedPositions() {
-    if (!this.positionsToSkip) {
-      return;
-    }
-
-    for (let counter = 0; counter < this.positionsToSkip.length; counter++) {
-      const position = this.positionsToSkip[counter];
-      this.drawBoardCanvasContext.clearRect(position.left, position.top, position.width, position.height);
-    }
   }
 
   /**

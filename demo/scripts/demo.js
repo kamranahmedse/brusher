@@ -11,7 +11,6 @@ initHighlighter();
 
 const brusher = new Brusher({
   image: 'images/original.jpg',
-  skip: ['.panel-social'],
 });
 
 brusher.init();
