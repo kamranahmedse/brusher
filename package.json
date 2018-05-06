@@ -1,6 +1,6 @@
 {
   "name": "brusher",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A light-weight, vanilla JavaScript library to help you create fancy backgrounds",
   "main": "dist/brusher.min.js",
   "scripts": {
