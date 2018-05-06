@@ -73,21 +73,21 @@ module.exports = {
       {from: './demo/images', to: 'images'}
     ]),
     new HtmlWebpackPlugin({
-      bodyClass: 'home',
+      bodyClass: 'homepage',
+      template: 'demo/homepage.html',
       filename: 'index.html',
-      template: 'demo/index.html',
     }),
     new HtmlWebpackPlugin({
-      filename: 'demo.html',
       template: 'demo/demo.html',
+      filename: 'demo.html',
     }),
     new HtmlWebpackPlugin({
-      filename: 'non-sticky.html',
       template: 'demo/non-sticky.html',
+      filename: 'non-sticky.html',
     }),
     new HtmlWebpackPlugin({
-      filename: 'line-style.html',
       template: 'demo/line-style.html',
+      filename: 'line-style.html',
     }),
   ],
   stats: {
