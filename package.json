@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "build-demo": "NODE_ENV=production webpack --config webpack.config.demo.js",
-    "build": "webpack --config webpack.config.prod.js"
+    "build": "webpack --config webpack.config.prod.js",
+    "push-demo": "git subtree push --prefix dist/demo origin gh-pages"
   },
   "bugs": {
     "url": "https://github.com/kamranahmedse/brusher/issues"
