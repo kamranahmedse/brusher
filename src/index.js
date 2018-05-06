@@ -295,6 +295,6 @@ export default class Brusher {
    */
   static isCanvasSupported() {
     const elem = document.createElement('canvas');
-    return !elem.getContext || !elem.getContext('2d');
+    return !!(elem.getContext && elem.getContext('2d'));
   }
 }
