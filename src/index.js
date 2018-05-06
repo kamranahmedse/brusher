@@ -41,6 +41,10 @@ export default class Brusher {
    * canvas and binding the necessary events
    */
   init() {
+    if (!Brusher.isCanvasSupported()) {
+      return;
+    }
+
     this.prepareCanvas();
     this.bind();
   }
@@ -283,5 +287,14 @@ export default class Brusher {
    */
   getElementDimensions() {
     return this.getElementNode().getBoundingClientRect();
+  }
+
+  /**
+   * Checks if canvas is supported or not
+   * @returns {boolean}
+   */
+  static isCanvasSupported() {
+    const elem = document.createElement('canvas');
+    return !elem.getContext || !elem.getContext('2d');
   }
 }
