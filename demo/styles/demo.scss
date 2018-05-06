@@ -20,4 +20,8 @@ body {
   &.line-style {
     background-image: url('images/line-style-blurred.jpg');
   }
+
+  &.background-less {
+    background: #5a5a5a;
+  }
 }

@@ -89,6 +89,10 @@ module.exports = {
       template: 'demo/line-style.html',
       filename: 'line-style.html',
     }),
+    new HtmlWebpackPlugin({
+      template: 'demo/background-less.html',
+      filename: 'background-less.html',
+    }),
   ],
   stats: {
     colors: true,
