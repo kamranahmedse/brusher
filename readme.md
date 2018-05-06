@@ -4,8 +4,13 @@
 
 ## Installation
 
+Install it using yarn or npm
 ```bash
 yarn add brusher
+```
+Or you may use unpkg
+```
+http://unpkg.com/brusher/dist/brusher.min.js
 ```
 
 ## Usage
