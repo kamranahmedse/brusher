@@ -1,4 +1,4 @@
-![](https://i.imgur.com/K6tOI63.png)
+![](https://i.imgur.com/Tq7TBnA.png)
 
 > Little vanilla JS library to add interactive backgrounds to your webpages - [View Demo](http://kamranahmed.info/brusher)
 
