@@ -29,11 +29,11 @@ Here is the list of options that you may use
 ```javascript
 const brusher = new Brusher({
   image: 'abstract.png', // Path of the image to be used as a brush
-  keepBlur: true, // Grow the cleared blurry section again after user has cleared it
-  stroke: 80, // Stroke size for the brush
-  lineStyle: 'round', // Brush style (round, square, butt)
-  autoBlur: false, // Brusher will use the provided image for the blurry background
-  autoBlurValue: 15, // Blur strength in pixels
+  keepBlur: true,        // Grow the cleared blurry section again after user has cleared it
+  stroke: 80,            // Stroke size for the brush
+  lineStyle: 'round',    // Brush style (round, square, butt)
+  autoBlur: false,       // Brusher will use the provided image for the blurry background
+  autoBlurValue: 15,     // Blur strength in pixels
 });
 
 brusher.init();
