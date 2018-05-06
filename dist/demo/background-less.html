@@ -26,12 +26,32 @@
       <div class="img-wrap">
         <img src="images/brush.svg" alt="">
       </div>
-      <h2>brusher</h2>
-      <p>A lightweight library to create interactive backgrounds</p>
+      <h2>No Background</h2>
+      <p>If you want to use it without the blurry background, all you have to do is not set the background on body and use it normally</p>
     </div>
 
-    <a class="btn btn-blue" href=".">&larr; Back to Home</a>
+    <pre><code>const brusher = new Brusher({
+    image: 'path/to/image.png'
+});
+
+brusher.init();
+</code></pre>
+
+    <a class="btn btn-red" href=".">&larr; Back to Home</a>
   </div>
+  <div class="panel">
+  <h3>Examples</h3>
+  <p>Find some of the examples demonstrating some of the options in use through the buttons below.</p>
+
+  <a href="keep-cleared.html" class="btn btn-blue">Keep Cleared Sections</a>
+  <a href="background-less.html" class="btn btn-blue">Without Background Demo</a>
+  <a href="sticky.html" class="btn btn-blue">Sticky Blur Demo</a>
+  <a href="line-style.html" class="btn btn-blue">Different Line Style</a>
+  <a href="http://github.com/kamranahmedse/brusher" target="_blank" class="btn btn-github">
+    Github
+    <svg height="32" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+  </a>
+</div>
 </div>
 <script type="text/javascript" src="brusher-demo.min.js"></script></body>
 </html>

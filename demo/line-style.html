@@ -6,11 +6,18 @@
       <div class="img-wrap">
         <img src="images/brush.svg" alt="">
       </div>
-      <h2>brusher</h2>
-      <p>A lightweight library to create interactive backgrounds</p>
+      <h2>Line Styles</h2>
+      <p>There are three different line styles that brusher understands i.e. <code class="dangling">round, square, butt</code>. If you don't provide it, it will use <code class="dangling">round</code> by default. Also, depending upon the image, the effect might not be quite visible in the background.</p>
     </div>
 
-    <a class="btn btn-blue" href=".">&larr; Back to Home</a>
+    <pre><code>const brusher = new Brusher({
+  image: 'path/to/image.png',
+  lineStyle: 'butt',
+});
+
+brusher.init();
+</code></pre>
+    <a class="btn btn-red" href=".">&larr; Back to Home</a>
   </div>
   <%= require('html-loader!./partials/examples.html') %>
 </div>

@@ -82,8 +82,8 @@ module.exports = {
       filename: 'sticky.html',
     }),
     new HtmlWebpackPlugin({
-      template: 'demo/non-sticky.html',
-      filename: 'non-sticky.html',
+      template: 'demo/keep-cleared.html',
+      filename: 'keep-cleared.html',
     }),
     new HtmlWebpackPlugin({
       template: 'demo/line-style.html',

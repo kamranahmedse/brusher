@@ -6,11 +6,18 @@
       <div class="img-wrap">
         <img src="images/brush.svg" alt="">
       </div>
-      <h2>brusher</h2>
-      <p>A lightweight library to create interactive backgrounds</p>
+      <h2>No Background</h2>
+      <p>If you want to use it without the blurry background, all you have to do is not set the background on body and use it normally</p>
     </div>
 
-    <a class="btn btn-blue" href=".">&larr; Back to Home</a>
+    <pre><code>const brusher = new Brusher({
+    image: 'path/to/image.png'
+});
+
+brusher.init();
+</code></pre>
+
+    <a class="btn btn-red" href=".">&larr; Back to Home</a>
   </div>
   <%= require('html-loader!./partials/examples.html') %>
 </div>

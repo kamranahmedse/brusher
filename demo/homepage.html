@@ -31,7 +31,7 @@
     <p>Here is the list of options that you may use</p>
     <pre><code class="javascript hljs">const brusher = new Brusher({
     image: 'abstract.png', // Path of the image to be used as a brush
-    keepBlur: true, // Grow the cleared blurry section again after user has cleared it
+    keepCleared: false, // Whether to keep cleared sections or blur them again
     stroke: 80, // Stroke size for the brush
     lineStyle: 'round', // Brush style (round, square, butt)
     autoBlur: false, // Brusher will use the provided image for the blurry background

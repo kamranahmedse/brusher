@@ -15,7 +15,7 @@ export default class Brusher {
     this.options = {
       image: null,
       stroke: 80,
-      keepBlur: true,
+      keepCleared: false,
       autoBlur: false,
       autoBlurValue: 15,
       lineStyle: 'round',
@@ -197,7 +197,7 @@ export default class Brusher {
     }
 
     // Do not clear the drawn image if the blur is to be kept
-    if (this.options.keepBlur) {
+    if (!this.options.keepCleared) {
       this.imageCanvasContext.clearRect(0, 0, this.imageCanvas.width, this.imageCanvas.height);
     }
 

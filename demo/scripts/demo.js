@@ -8,10 +8,10 @@ const classMapping = {
     image: 'images/default.jpg',
     stroke: 30,
   },
-  'non-sticky': {
-    image: 'images/non-sticky.jpg',
+  'keep-cleared': {
+    image: 'images/keep-cleared.jpg',
     stroke: 50,
-    keepBlur: false,
+    keepCleared: true,
   },
   'line-style': {
     image: 'images/line-style.jpg',

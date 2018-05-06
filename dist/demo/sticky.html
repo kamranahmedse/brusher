@@ -19,20 +19,20 @@
     ga('send', 'pageview');
   </script>
 <link href="brusher-demo.min.css" rel="stylesheet"></head>
-<body class="line-style">
+<body class="default-demo">
 <div class="panels-wrap">
-  <div class="panel panel-first">
+  <div class="panel panel-first panel-only">
     <div class="header-wrap">
       <div class="img-wrap">
         <img src="images/brush.svg" alt="">
       </div>
-      <h2>Line Styles</h2>
-      <p>There are three different line styles that brusher understands i.e. <code class="dangling">round, square, butt</code>. If you don't provide it, it will use <code class="dangling">round</code> by default. Also, depending upon the image, the effect might not be quite visible in the background.</p>
+      <h2>Sticky Blur</h2>
+      <p>If you want the cleared sections to be not preserved, all you have to do is set <code class="dangling">keepCleared</code> to <code class="dangling">false</code>; or not set it since it defaults to false</p>
     </div>
 
     <pre><code>const brusher = new Brusher({
   image: 'path/to/image.png',
-  lineStyle: 'butt',
+  keepCleared: false,
 });
 
 brusher.init();
