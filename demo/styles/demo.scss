@@ -1,34 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+@import "common";
 
 body {
-  font-family: sans-serif;
-  font-size: 14px;
-
   background: url('images/blurred.jpg');
   background-size: cover;
   background-position: 0 0;
   background-attachment: fixed;
-}
-
-.header-container {
-  background: white;
-  text-align: center;
-  padding: 20px 0;
-}
-
-h1 {
-  margin-bottom: 10px;
-}
-
-p {
-  line-height: 1.75;
 }

@@ -15,10 +15,10 @@ export default class Brusher {
 
     this.options = {
       image: null,
+      stroke: 80,
+      keepBlur: true,
       autoBlur: false,
       autoBlurValue: 15,
-      stroke: 80,
-      keepBlur: false,
       lineStyle: 'round',
       skip: [],
       ...options,
@@ -165,6 +165,8 @@ export default class Brusher {
         height: element.offsetHeight,
       });
     }
+
+    console.log(this.positionsToSkip);
   }
 
   /**
@@ -232,7 +234,7 @@ export default class Brusher {
     }
 
     // Do not clear the drawn image if the blur is to be kept
-    if (!this.options.keepBlur) {
+    if (this.options.keepBlur) {
       this.imageCanvasContext.clearRect(0, 0, this.imageCanvas.width, this.imageCanvas.height);
     }
 

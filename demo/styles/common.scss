@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+html, body {
+  position: relative;
+  overflow-x: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 1.5;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  text-align: left;
+  background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
+  font-family: inherit;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+code {
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+pre {
+  text-align: left;
+}
+
+hr {
+  height: 4px;
+  background-size: cover;
+  margin-bottom: 15px;
+  background: url(images/separator.png) repeat-y center;
+  border: none;
+}
+
+.bg-highlight {
+  background: #ffc !important;
+}
+
+.panels-wrap {
+  margin-bottom: 150px;
+}
+
+.panel {
+  background: white;
+  max-width: 450px;
+  border-radius: 10px;
+  margin: 10px auto;
+  text-align: left;
+  padding: 20px;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  &.panel-first {
+    text-align: center;
+    margin-top: 225px;
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+
+  &.panel-social {
+    a {
+      color: white;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    text-align: center;
+    padding: 10px;
+    background: transparent;
+    margin-top: 0;
+  }
+
+  .img-wrap {
+    max-width: 155px;
+    margin: -100px auto 0;
+    background: white;
+    border-radius: 100%;
+    padding: 20px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+code.dangling {
+  background: whitesmoke;
+  padding: 5px;
+  font-size: 15px;
+  color: #ef4823;
+}
+
+.btn {
+  text-align: center;
+  display: block;
+  margin-bottom: 3px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background: #5e8e9c;
+}
+
+.btn-blue {
+  background: #2020ff;
+}
+
+.btn-red {
+  background: #ef4823;
+}
+
+.btn-run {
+  margin-top: -10px;
+}
+
+.non-btn {
+  margin-top: 15px;
+  display: block;
+  color: #3700ff;
+  text-decoration: none;
+}

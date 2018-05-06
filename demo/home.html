@@ -1,8 +1,56 @@
 <%= require('html-loader!./partials/header.html') %>
 
-<div class="header-container">
-  <h1>We are testing this</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at distinctio dolorum, magni pariatur quidem quis quos repellat sunt veritatis! Alias animi dolorem doloremque magni odit provident qui velit! Optio.</p>
+<div class="panels-wrap">
+  <div class="panel panel-first">
+    <div class="img-wrap">
+      <img src="images/brush.svg" alt="">
+    </div>
+    <h2>brusher</h2>
+    <p>A tiny little library to add interactive backgrounds to webpages</p>
+
+    <a class="github-button" href="https://github.com/kamranahmedse/developer-roadmap" data-size="large" data-show-count="true">Star</a>
+  </div>
+
+  <div class="panel bg-highlight">
+    <p>Background of this page has been auto created by brusher. Move your mouse around to see it in action.</p>
+    <p>All you need is an image. Below code shows how the current page has been initialized</p>
+    <pre><code class="javascript hljs">const brusher = new Brusher({
+  image: 'abstract.png'
+});
+
+brusher.init();
+</code></pre>
+
+    <p>There are several options that you can use to modify the result. Have a look at the section below.</p>
+  </div>
+
+  <div class="panel bg-highlight">
+    <h3>Available Options</h3>
+    <p>Here is the list of options that you may use</p>
+    <pre><code class="javascript hljs">const brusher = new Brusher({
+  image: 'abstract.png', // Path of the image to be used as a brush
+  keepBlur: true, // Grow the cleared blurry section again after user has cleared it
+  stroke: 80, // Stroke size for the brush
+  lineStyle: 'round', // Brush style (round, square, butt)
+  skip: [], // Array of query selectors from behind which blur will not be allowed to clear
+  autoBlur: false, // Brusher will use the provided image for the blurry background
+  autoBlurValue: 15, // Blur strength in pixels
+});
+
+brusher.init();
+</code></pre>
+    <p>If you have any questions, feel free to reach out</p>
+  </div>
+
+  <div class="panel">
+    <h3>Examples</h3>
+    <p>Find some of the examples demonstrating some of the options in use through the buttons below.</p>
+
+    <a href="#" class="btn">Default Demo</a>
+    <a href="#" class="btn">Non Growing Blur</a>
+    <a href="#" class="btn">Different Line Style</a>
+
+  </div>
 </div>
 
 <%= require('html-loader!./partials/footer.html') %>
