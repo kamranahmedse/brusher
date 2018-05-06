@@ -4,9 +4,8 @@ const classMapping = {
   homepage: {
     image: 'images/homepage.jpg',
   },
-  'default-demo': {
+  'sticky-blur': {
     image: 'images/default.jpg',
-    stroke: 30,
   },
   'keep-cleared': {
     image: 'images/keep-cleared.jpg',
