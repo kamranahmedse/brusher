@@ -1,10 +1,6 @@
-<p align="center">
-	<img src="demo/images/brush.png" width="300">
-	<br>
-	<br>
-</p>
+# Brusher
 
-> Add interactive backgrounds to your webpages - [View Demo](http://kamranahmed.info/brusher)
+> Little vanilla JS library to add interactive backgrounds to your webpages - [View Demo](http://kamranahmed.info/brusher)
 
 ## Installation
 
