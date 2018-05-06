@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wobble - Demo</title>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+<link href="brusher-demo.min.css" rel="stylesheet"></head>
+<body class="homepage">
+<div class="panels-wrap">
+  <div class="panel panel-first">
+    <div class="header-wrap">
+      <div class="img-wrap">
+        <img src="images/brush.svg" alt="">
+      </div>
+      <h2>brusher</h2>
+      <p>A lightweight library to create interactive backgrounds</p>
+
+      <a class="github-button" href="https://github.com/kamranahmedse/brusher" data-size="large" data-show-count="true">Star</a>
+    </div>
+  </div>
+
+  <div class="panel bg-highlight">
+    <p>Background of this page has been auto created by brusher. Move your mouse around to see it in action.</p>
+    <p>All you need is an image. Below code shows how the current page has been initialized</p>
+    <pre><code class="javascript hljs">const brusher = new Brusher({
+    image: 'abstract.png'
+  });
+
+  brusher.init();
+  </code></pre>
+
+    <p>There are several options that you can use to modify the result. Have a look at the section below.</p>
+  </div>
+
+  <div class="panel bg-highlight">
+    <h3>Available Options</h3>
+    <p>Here is the list of options that you may use</p>
+    <pre><code class="javascript hljs">const brusher = new Brusher({
+    image: 'abstract.png', // Path of the image to be used as a brush
+    keepBlur: true, // Grow the cleared blurry section again after user has cleared it
+    stroke: 80, // Stroke size for the brush
+    lineStyle: 'round', // Brush style (round, square, butt)
+    autoBlur: false, // Brusher will use the provided image for the blurry background
+    autoBlurValue: 15, // Blur strength in pixels
+  });
+
+  brusher.init();
+  </code></pre>
+    <p>If you have any questions, feel free to reach out</p>
+  </div>
+
+  <div class="panel">
+    <h3>Examples</h3>
+    <p>Find some of the examples demonstrating some of the options in use through the buttons below.</p>
+
+    <a href="non-sticky.html" class="btn btn-blue">Non Sticky Blur</a>
+    <a href="background-less.html" class="btn btn-blue">Background Less Demo</a>
+    <a href="demo.html" class="btn btn-blue">Sticky Blur Demo</a>
+    <a href="line-style.html" class="btn btn-blue">Different Line Style</a>
+  </div>
+</div>
+<script type="text/javascript" src="brusher-demo.min.js"></script></body>
+</html>
