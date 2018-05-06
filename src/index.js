@@ -3,6 +3,7 @@ export default class Brusher {
    * @param {Object} options
    */
   constructor(options = {}) {
+    this.blurryStyleNode = null;
     this.mouseSteps = [];
     this.positionsToSkip = [];
     this.drawBoardCanvas = null;
@@ -14,6 +15,8 @@ export default class Brusher {
 
     this.options = {
       image: null,
+      autoBlur: false,
+      autoBlurValue: 15,
       stroke: 80,
       keepBlur: false,
       lineStyle: 'round',
@@ -94,6 +97,10 @@ export default class Brusher {
    * drawing canvas
    */
   prepareCanvas() {
+    if (this.options.autoBlur) {
+      this.attachBlurryBackground();
+    }
+
     this.findPositionsToSkip();
 
     this.prepareDrawingCanvas();
@@ -102,10 +109,49 @@ export default class Brusher {
   }
 
   /**
+   * Creates a blurry background for the body if needed
+   * @todo use CSS file and just apply a class
+   */
+  attachBlurryBackground() {
+    if (this.blurryStyleNode) {
+      return;
+    }
+
+    const blurryCss = `
+      body { position: relative;  }
+      body:before {
+        background-size: cover;
+        background-position: 0 0;
+        background-attachment: fixed;
+        content: '';
+        background-image: url('${this.options.image}');
+        position: fixed;
+        z-index: -1;
+        display: block;
+        width: 100%;
+        height: 100%;
+        -webkit-filter: blur(${this.options.autoBlurValue}px);
+        filter: blur(${this.options.autoBlurValue}px); 
+        top: 0;
+        left: 0;
+      }
+    `;
+
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    style.append(document.createTextNode(blurryCss));
+    document.head.appendChild(style);
+
+    this.blurryStyleNode = style;
+  }
+
+  /**
    * Finds the position of elements where
    * we are not to draw
    */
   findPositionsToSkip() {
+    this.positionsToSkip = [];
+
     for (let counter = 0; counter < this.options.skip.length; counter++) {
       const element = document.querySelector(this.options.skip[counter]);
       if (!element) {

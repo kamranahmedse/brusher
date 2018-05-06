@@ -1,2 +1,2 @@
-# brusher
-> Create interactive backgrounds for your pages
+# Brusher
+> Create interactive backgrounds for your webpages
