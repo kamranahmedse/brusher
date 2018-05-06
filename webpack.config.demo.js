@@ -78,8 +78,8 @@ module.exports = {
       filename: 'index.html',
     }),
     new HtmlWebpackPlugin({
-      template: 'demo/demo.html',
-      filename: 'demo.html',
+      template: 'demo/sticky.html',
+      filename: 'sticky.html',
     }),
     new HtmlWebpackPlugin({
       template: 'demo/non-sticky.html',

@@ -145,6 +145,19 @@ code.dangling {
   background: #5e8e9c;
 }
 
+.btn-github {
+  margin-top: 20px;
+  background: #212121;
+
+  svg {
+    fill: white;
+    margin-left: 2px;
+    height: 18px;
+    position: relative;
+    top: 3px;
+  }
+}
+
 .btn-blue {
   background: #2020ff;
 }
