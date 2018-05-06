@@ -1,5 +1,25 @@
 import Brusher from '../../src';
 
+const classMapping = {
+  homepage: {
+    image: 'images/homepage.jpg',
+  },
+  'default-demo': {
+    image: 'images/default.jpg',
+    stroke: 30,
+  },
+  'non-sticky': {
+    image: 'images/non-sticky.jpg',
+    stroke: 50,
+    keepBlur: false,
+  },
+  'line-style': {
+    image: 'images/line-style.jpg',
+    stroke: 70,
+    lineStyle: 'butt',
+  },
+};
+
 function initHighlighter() {
   const codeElements = document.querySelectorAll('pre code');
   for (let counter = 0; counter < codeElements.length; counter++) {
@@ -7,10 +27,19 @@ function initHighlighter() {
   }
 }
 
+function initBrusher() {
+  const bodyClasses = document.body.classList;
+  let options = classMapping.homepage;
+
+  for (const currentClass in classMapping) {
+    if (bodyClasses.contains(currentClass)) {
+      options = classMapping[currentClass];
+    }
+  }
+
+  const brusher = new Brusher(options);
+  brusher.init();
+}
+
+initBrusher();
 initHighlighter();
-
-const brusher = new Brusher({
-  image: 'images/original.jpg',
-});
-
-brusher.init();

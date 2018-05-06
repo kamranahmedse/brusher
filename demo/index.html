@@ -1,5 +1,5 @@
 <%= require('html-loader!./partials/header.html') %>
-
+<body class="homepage">
 <div class="panels-wrap">
   <div class="panel panel-first">
     <div class="img-wrap">
@@ -15,11 +15,11 @@
     <p>Background of this page has been auto created by brusher. Move your mouse around to see it in action.</p>
     <p>All you need is an image. Below code shows how the current page has been initialized</p>
     <pre><code class="javascript hljs">const brusher = new Brusher({
-  image: 'abstract.png'
-});
+    image: 'abstract.png'
+  });
 
-brusher.init();
-</code></pre>
+  brusher.init();
+  </code></pre>
 
     <p>There are several options that you can use to modify the result. Have a look at the section below.</p>
   </div>
@@ -28,16 +28,16 @@ brusher.init();
     <h3>Available Options</h3>
     <p>Here is the list of options that you may use</p>
     <pre><code class="javascript hljs">const brusher = new Brusher({
-  image: 'abstract.png', // Path of the image to be used as a brush
-  keepBlur: true, // Grow the cleared blurry section again after user has cleared it
-  stroke: 80, // Stroke size for the brush
-  lineStyle: 'round', // Brush style (round, square, butt)
-  autoBlur: false, // Brusher will use the provided image for the blurry background
-  autoBlurValue: 15, // Blur strength in pixels
-});
+    image: 'abstract.png', // Path of the image to be used as a brush
+    keepBlur: true, // Grow the cleared blurry section again after user has cleared it
+    stroke: 80, // Stroke size for the brush
+    lineStyle: 'round', // Brush style (round, square, butt)
+    autoBlur: false, // Brusher will use the provided image for the blurry background
+    autoBlurValue: 15, // Blur strength in pixels
+  });
 
-brusher.init();
-</code></pre>
+  brusher.init();
+  </code></pre>
     <p>If you have any questions, feel free to reach out</p>
   </div>
 
@@ -45,11 +45,10 @@ brusher.init();
     <h3>Examples</h3>
     <p>Find some of the examples demonstrating some of the options in use through the buttons below.</p>
 
-    <a href="#" class="btn">Default Demo</a>
-    <a href="#" class="btn">Non Growing Blur</a>
-    <a href="#" class="btn">Different Line Style</a>
-
+    <a href="demo.html" class="btn btn-blue">Default Demo</a>
+    <a href="non-sticky.html" class="btn btn-blue">Non Sticky Blur</a>
+    <a href="line-style.html" class="btn btn-blue">Different Line Style</a>
   </div>
 </div>
-
+</body>
 <%= require('html-loader!./partials/footer.html') %>

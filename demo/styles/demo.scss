@@ -1,8 +1,23 @@
 @import "common";
 
 body {
-  background: url('images/blurred.jpg');
   background-size: cover;
   background-position: 0 0;
   background-attachment: fixed;
+
+  &.homepage {
+    background-image: url('images/homepage-blurred.jpg');
+  }
+
+  &.default-demo {
+    background-image: url('images/default-blurred.jpg');
+  }
+
+  &.non-sticky {
+    background-image: url('images/non-sticky-blurred.jpg');
+  }
+
+  &.line-style {
+    background-image: url('images/line-style-blurred.jpg');
+  }
 }
