@@ -44,7 +44,7 @@ const brusher = new Brusher({
 brusher.init();
 ```
 
-A note on blurry background: although brusher is capable of generating blurry background by itself, it is recommended that you [blur the image yourself](http://pinetools.com/blur-image) and apply it to the body for improved performance. Brusher relies on CSS blur for the background. And rendering performance for the pre-provided blurred image would be of-cource much better than that applied using CSS. Here is the sample CSS that you may use for the background
+A note on blurry background: although brusher is capable of generating blurry background by itself, it is recommended that you [blur the image yourself](http://pinetools.com/blur-image) and apply it to the body for improved performance. Brusher relies on CSS blur for the background. And rendering performance for the pre-provided blurred image would be of-course much better than that applied using CSS. Here is the sample CSS that you may use for the background
 
 ```css
 body {
