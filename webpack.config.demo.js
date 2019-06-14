@@ -10,7 +10,8 @@ const styleFileName = isProduction ? 'brusher-demo.min.css' : 'brusher-demo.css'
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    // Add dev server only for non-production environment
+    ...(!isProduction ? ['webpack-dev-server/client?http://localhost:3000'] : []),
     './demo/styles/demo.scss',
     './demo/scripts/demo.js',
     './src/index.js',
