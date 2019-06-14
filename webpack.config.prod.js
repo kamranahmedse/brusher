@@ -31,15 +31,16 @@ module.exports = {
         options: {
           presets: [
             [
-              'env',
+              '@babel/preset-env',
               {
+                corejs: '2',
                 useBuiltIns: 'usage',
               },
             ],
           ],
           plugins: [
-            'babel-plugin-add-module-exports',
-            'transform-object-rest-spread',
+            'add-module-exports',
+            '@babel/plugin-proposal-object-rest-spread',
           ],
         },
       },

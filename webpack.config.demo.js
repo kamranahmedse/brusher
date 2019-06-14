@@ -40,15 +40,16 @@ module.exports = {
         options: {
           presets: [
             [
-              'env',
+              '@babel/preset-env',
               {
+                corejs: '2',
                 useBuiltIns: 'usage',
               },
             ],
           ],
           plugins: [
-            'babel-plugin-add-module-exports',
-            'transform-object-rest-spread',
+            'add-module-exports',
+            '@babel/plugin-proposal-object-rest-spread',
           ],
         },
       },
@@ -57,7 +58,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract([
           {
             loader: 'css-loader',
-            options: {minimize: isProduction, url: false},
+            options: { url: false },
           },
           'sass-loader',
         ]),
@@ -70,7 +71,7 @@ module.exports = {
       allChunks: true,
     }),
     new CopyWebpackPlugin([
-      {from: './demo/images', to: 'images'}
+      { from: './demo/images', to: 'images' },
     ]),
     new HtmlWebpackPlugin({
       bodyClass: 'homepage',
